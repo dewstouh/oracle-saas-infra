@@ -62,7 +62,7 @@ This repository contains the actual infrastructure code that powers all my proje
 ## 🌐 Domains & Multi-Project Setup
 
 - All status pages and monitoring dashboards are deployed from a **central stack**.
-- Custom domains for each project (e.g., `status.codebeans.com`) are set up as redirects or proxies to the relevant section/group.
+- Custom domains for each project (e.g., `status.codebinx.com`) are set up as redirects or proxies to the relevant section/group.
 - Fully documented in `/docs/domains.md`.
 
 ---
