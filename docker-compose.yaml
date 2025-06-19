@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  cachet:
+    image: cachethq/docker:2.4.0
+    container_name: cachet
+    restart: unless-stopped
+    environment:
+      - DB_DRIVER=mysql
+      - DB_HOST=cachet-db
+      - DB_DATABASE=cachet
+      - DB_USERNAME=cachet
+      - DB_PASSWORD=${CACHET_DB_PASSWORD}
+      - APP_KEY=${CACHET_APP_KEY}
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - APP_URL=${CACHET_APP_URL}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./status/cachet-data:/var/www/html
+    depends_on:
+      - cachet-db
+
+  cachet-db:
+    image: mariadb:10.5
+    container_name: cachet-db
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${CACHET_DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=cachet
+      - MYSQL_USER=cachet
+      - MYSQL_PASSWORD=${CACHET_DB_PASSWORD}
+    volumes:
+      - ./status/cachet-db:/var/lib/mysql
+
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
+    container_name: uptime-kuma
+    restart: unless-stopped
+    volumes:
+      - ./monitoring/uptime-kuma-data:/app/data
+    ports:
+      - "3001:3001"
