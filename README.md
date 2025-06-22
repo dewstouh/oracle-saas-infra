@@ -99,9 +99,15 @@ sudo systemctl enable --now fail2ban
 
 # Useful tools for server management
 - ### [VPS Panel](./guides/vps-panel/README.md)
+  *A simple and easy-to-use VPS management panel for your Server.*
+![](https://imgur.com/XRZ7DP7.png)
 - ### [Mail Service](./guides/mail/README.md)
+    *A complete guide to set up a mail server with webmail, IMAP, SMTP, and more.*
+![](https://imgur.com/BFSeSem.png)
 - ### [Status Page]()
-    
+    *A simple status page to monitor your server's health and uptime.*
+![](https://imgur.com/DwaRLHK.png)
+
 
 ----------
 
