@@ -96,15 +96,24 @@ sudo systemctl enable --now fail2ban
     
 ----------
 
+# Important guides to follow after installation
+
+- ### [Backup your server](./guides/backup/README.md)
+    *A complete guide to backup your server and restore it in case of failure.*
+
+- ### [Hardening your server](./guides/hardening/README.md)
+    *A complete guide to harden your server and make it more secure.*
+
+
 
 # Useful tools for server management
-- ### [VPS Panel](./guides/vps-panel/README.md)
+- ### [VPS Panel](./guides/extras/vps-panel/README.md)
   *A simple and easy-to-use VPS management panel for your Server.*
 ![](https://imgur.com/XRZ7DP7.png)
-- ### [Mail Service](./guides/mail/README.md)
+- ### [Mail Service](./guides/extras/mail/README.md)
     *A complete guide to set up a mail server with webmail, IMAP, SMTP, and more.*
 ![](https://imgur.com/BFSeSem.png)
-- ### [Status Page]()
+- ### [Status Page](./guides/extras/uptime-status/README.md)
     *A simple status page to monitor your server's health and uptime.*
 ![](https://imgur.com/DwaRLHK.png)
 
