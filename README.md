@@ -1,104 +1,108 @@
-# justdiego-infra
+# Just Diego Infra - My personal infrastructure based on Oracle Cloud
 
-> **Production-ready modular infrastructure for SaaS, personal projects and real-world deployment.**
+Personal guide to spin up, harden, and maintain an Always Free Oracle Cloud instance, with Coolify, Docker, mail server, all in one with and maximum security.  
+If you break something, fix it easily thanks to the backups.
 
-This repository contains the actual infrastructure code that powers all my projects and status pages. It’s fully documented, portable and designed to be scalable and robust.
-
----
-
-## 🚀 What’s Included?
-
-- **Centralized Status Page**  
-  - Powered by [Cachet](https://github.com/cachethq/cachet)  
-  - Multi-project/component support  
-  - Used for:  
-    - [status.justdiego.com](https://status.justdiego.com)  
-
-- **Monitoring**  
-  - [Uptime Kuma](https://github.com/louislam/uptime-kuma) ready (integration scripts included)
-  - Real-time uptime and incident automation (optional)
-
-- **Proxy / Reverse Proxy**  
-  - Traefik/Nginx configs for SSL, redirects and multi-domain setup
-
-- **Automated Backups**  
-  - Scripts for persistent volume and DB backup
-
-- **Plug & Play Deployment**  
-  - Docker Compose for full infra  
-  - Coolify-ready
-
-- **DevOps Utilities**  
-  - Migration scripts  
-  - Restore scripts  
-  - Example CI/CD setup
+I've been using Oracle cloud services and i broke them down many times. I made this guide so you don't make the same mistakes as i did.
 
 ---
 
-## ⚡️ Quick Start
+## 1. Update and upgrade the system
 
-1. **Clone this repo:**
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt autoremove -y
+sudo apt clean
+```
+
+----------
+
+## 2. Create user, set up SSH keys, and lock down SSH
+*Lock ssh down so it can only be connected VIA private keys.*
+
+-   Generate SSH key pair on your local machine:
+    
     ```bash
-    git clone https://github.com/dewstouh/justdiego-infra.git
-    cd justdiego-infra
+    ssh-keygen -t ed25519 -C "yourname@yourdomain"
+    
     ```
+    
+-   Add your **public** key to `~/.ssh/authorized_keys` on the server.
+    
+-   Edit `/etc/ssh/sshd_config.d/example.conf`:
+    ```
+    nano /etc/ssh/sshd_config.d/example.conf
+    ```    
 
-2. **Copy and edit environment variables:**
+    ```
+    Port 22
+    PermitRootLogin no
+    PasswordAuthentication no
+    AllowUsers justdiego
+    
+    ```
+    
+-   Restart SSH:
+    
     ```bash
-    cp .env.example .env
-    nano .env
+    sudo systemctl restart ssh
     ```
+    
 
-3. **Start the full stack:**
-    ```bash
-    docker-compose up -d
-    ```
+----------
 
-4. **Access your status page:**  
-   Visit `https://status.justdiego.com` (or your assigned domain).
+## 3. Firewall (UFW) — Lock it down
 
----
+*Allow the needed web ports only (you can add more later).*
 
-## 🌐 Domains & Multi-Project Setup
+```bash
+sudo apt install ufw -y
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw enable
+sudo ufw status numbered
 
-- All status pages and monitoring dashboards are deployed from a **central stack**.
-- Custom domains for each project (e.g., `status.codebinx.com`) are set up as redirects or proxies to the relevant section/group.
-- Fully documented in `/docs/domains.md`.
+```
 
----
 
-## 🛡️ Production-Ready
+## 4. Install and enable Fail2ban
 
-- Volumes for data persistence (zero data loss on migration or update)
-- Backups automated & documented
-- One-command migration and restore
+*This will add a cooldown to the entity that tries to mass request our machine, avoiding bruteforce methods.*
 
----
+```bash
+sudo apt install fail2ban -y
+sudo systemctl enable --now fail2ban
+```
+----------
 
-## 📸 Screenshots
 
-> [TODO]
+## 5. Backups and Snapshots
 
----
+-   Make sure to create a backup of the current volume [here](https://cloud.oracle.com/compute/instances) 
+    
+-   Store `.env`, SSH keys, and important configs outside the server.
 
-## 🧩 Extensible
+![](https://imgur.com/jSEO16t.png)
+    
 
-- Add new services by editing `docker-compose.yaml` and config files
-- Modular: can include new monitoring, CI/CD, proxies, or databases as needed
+----------
 
----
+## 6. Restore
 
-## 💡 Why Open Source?
+-   If you break something or you **broke** something **in the process**, DONT DELETE YOUR INSTANCE, [check this guide instead](./guides/troubleshooting/reinstall-everything.md).
+    
+----------
 
-I maintain this repository public so anyone (recruiters, companies, or developers) can see, test, or adapt a real, working SaaS-level infrastructure.  
-**See it in action:**  
-- [status.justdiego.com](https://status.justdiego.com)
 
----
+# Useful tools for server management
+- ### [VPS Panel](./guides/vps-panel/README.md)
+- ### [Mail Service](./guides/mail/README.md)
+- ### [Status Page]()
+    
 
-## 🤝 Contributions
+----------
 
-Suggestions, issues, and PRs welcome!  
-Feel free to fork and adapt this stack for your own SaaS/product.
-
----
+**Written and tested by Diego Rodríguez. If you break it, you fix it.**
