@@ -1,9 +1,12 @@
+
+![](https://marketingcube.com.au/wp-content/uploads/2014/02/BANNER-Oracle-CloudWorld-760pxl-wide.jpeg)
 # Just Diego Infra - My personal infrastructure based on Oracle Cloud
 
 Personal guide to spin up, harden, and maintain an Always Free Oracle Cloud instance, with Coolify, Docker, mail server, all in one with and maximum security.  
 If you break something, fix it easily thanks to the backups.
 
 I've been using Oracle cloud services and i broke them down many times. I made this guide so you don't make the same mistakes as i did.
+
 
 ---
 
