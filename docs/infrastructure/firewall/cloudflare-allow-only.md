@@ -1,4 +1,4 @@
-t# Allow ONLY Cloudflare IPs on HTTP/HTTPS
+# Allow ONLY Cloudflare IPs on HTTP/HTTPS
 
 **This is how you ensure only Cloudflare can access your web server,  
 while all direct hits to your IP are blocked (except SSH for you).**
@@ -10,7 +10,7 @@ while all direct hits to your IP are blocked (except SSH for you).**
 ```bash
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
-````
+```
 
 ---
 

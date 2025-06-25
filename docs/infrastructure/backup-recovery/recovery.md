@@ -1,18 +1,30 @@
-# Oracle Cloud - Full “Reinstall Everything” Guide (VNC, Netboot, Rescue & Recovery)
+# Oracle Cloud - Recovery Guide (VNC, Netboot, Rescue & Recovery)
 
 A complete survival log of fully wiping and reinstalling an Oracle Cloud VM,  
 using netboot.xyz, VNC console, boot volume resizing, and handling every gotcha on the way.  
-**All commands, screenshots, and errors included — nothing left out.**
+
+This is extremely useful for those who want to start fresh with a new OS install, or recover from a broken system without losing data.
+
+**All commands, screenshots, and errors included, nothing left out.**
 
 ---
+
+### Requirements:
+- An Oracle Cloud VM instance (ARM or x86).
+- SSH access to the instance.
+- Basic knowledge of Linux commands and SSH.
+- A VNC client installed on your local machine (e.g., TigerVNC, Remmina, RealVNC).
 
 ## **1. BACKUP OR DIE**
 
 - Always create a **boot volume backup** (and a clone) in Oracle Cloud before touching the disk.
 - “No backup, no mercy.”  
-  Use the OCI panel:  
+  Use the OCI panel: 
   *Compute > Boot Volumes > Backups > Create Backup*
 
+![](https://i.imgur.com/xiaWp7v.png)
+
+![](https://i.imgur.com/7r6iHut.png)
 ---
 
 ## **2. RESIZE THE DISK (Optional but recommended)**
@@ -20,6 +32,8 @@ using netboot.xyz, VNC console, boot volume resizing, and handling every gotcha 
 - Go to your VM in Oracle panel, stop the instance.
 - Resize the Boot Volume (increase size to, e.g., 200GB).
 - Start the instance and SSH in.
+
+![](https://i.imgur.com/AEUikU3.png)
 
 - **Check new disk size:**
     ```bash
@@ -47,6 +61,8 @@ using netboot.xyz, VNC console, boot volume resizing, and handling every gotcha 
     # For x86
     wget https://boot.netboot.xyz/ipxe/netboot.xyz.efi
     ```
+
+Or you can download it locally and upload it to the instance from here: https://netboot.xyz/downloads
 
 ---
 
@@ -110,7 +126,7 @@ using netboot.xyz, VNC console, boot volume resizing, and handling every gotcha 
 ## **6. INSTALL OS FRESH (Ubuntu/Debian, etc.)**
 
 - In the netboot.xyz menu, pick the distro/version (e.g., Ubuntu 22.04 LTS “Jammy Jellyfish”).
-    - Server variant is fine — if not shown, the installer will do a minimal (no desktop) by default.
+    - Server variant is fine, if not shown, the installer will do a minimal (no desktop) by default.
 - Go through the network install as usual.
     - **When partitioning, edit LVM/root logical volume to use 100% of available space**.
     - If you see only 97GB available (and you have a 200GB disk), use all of it during install, or fix later as above (`lvextend` + `resize2fs`).
@@ -147,6 +163,9 @@ using netboot.xyz, VNC console, boot volume resizing, and handling every gotcha 
 ---
 
 ## **8. POST-INSTALLATION HARDENING**
+
+> For a more extensive guide on post-installation hardening, check out the [post-installation guide](postinstall.md).
+---
 
 - Update all packages:
     ```bash

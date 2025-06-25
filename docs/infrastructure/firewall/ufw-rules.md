@@ -11,7 +11,7 @@ These are the base rules for a secure Oracle Cloud server.
 ```bash
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
-````
+```
 
 ---
 

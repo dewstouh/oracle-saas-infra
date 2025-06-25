@@ -1,126 +1,118 @@
 
-![](https://marketingcube.com.au/wp-content/uploads/2014/02/BANNER-Oracle-CloudWorld-760pxl-wide.jpeg)
-# Just Diego Infra - My personal infrastructure based on Oracle Cloud
+# 🏗️ Just Diego Infra
 
-Personal guide to spin up, harden, and maintain an Always Free Oracle Cloud instance, with Coolify, Docker, mail server, all in one with and maximum security.  
-If you break something, fix it easily thanks to the backups.
+<div align="center">
 
-I've been using Oracle cloud services and i broke them down many times. I made this guide so you don't make the same mistakes as i did.
+![Oracle Cloud](https://img.shields.io/badge/Oracle_Cloud-Always_Free-F80000?style=for-the-badge&logo=oracle&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Coolify](https://img.shields.io/badge/Coolify-6366F1?style=for-the-badge&logo=docker&logoColor=white)
+![Security](https://img.shields.io/badge/Security-Hardened-00D4AA?style=for-the-badge&logo=shield&logoColor=white)
 
+**Personal Oracle Cloud infrastructure with self-hosted services**
+
+</div>
 
 ---
 
-## 1. Update and upgrade the system
+## � Quick Start
 
-```bash
-sudo apt update && sudo apt upgrade -y
-sudo apt autoremove -y
-sudo apt clean
-```
+Transform a **free Oracle Cloud instance** into production-ready infrastructure in 2-3 hours.
 
-----------
+### [📖 Get Started](./docs/getting-started/README.md)
+**Set up Oracle Cloud, secure your server, and install Coolify**
 
-## 2. Create user, set up SSH keys, and lock down SSH
-*Lock ssh down so it can only be connected VIA private keys.*
+### [📚 Full Documentation](./docs/README.md)
+**Complete guides for infrastructure, services, and troubleshooting**
 
--   Generate SSH key pair on your local machine:
-    
-    ```bash
-    ssh-keygen -t ed25519 -C "yourname@yourdomain"
-    
-    ```
-    
--   Add your **public** key to `~/.ssh/authorized_keys` on the server.
-    
--   Edit `/etc/ssh/sshd_config.d/example.conf`:
-    ```
-    nano /etc/ssh/sshd_config.d/example.conf
-    ```    
+---
 
-    ```
-    Port 22
-    PermitRootLogin no
-    PasswordAuthentication no
-    AllowUsers justdiego
-    
-    ```
-    
--   Restart SSH:
-    
-    ```bash
-    sudo systemctl restart ssh
-    ```
-    
+## 🎯 What You'll Build
 
-----------
+- � **Security hardened** server with firewall
+- 🎛️ **Coolify panel** for service management  
+- 📧 **Mail server** with webmail
+- 📊 **Monitoring** and uptime tracking
+- 💾 **Automated backups**
 
-## 3. Firewall (UFW) — Lock it down
+---
 
-*Allow the needed web ports only (you can add more later).*
+## 📋 Quick Links
 
-```bash
-sudo apt install ufw -y
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw allow 22/tcp
-sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp
-sudo ufw enable
-sudo ufw status numbered
+- [Oracle Cloud Setup](./docs/getting-started/oracle-cloud-setup.md)
+- [Security Hardening](./docs/getting-started/security-hardening.md)
+- [Initial Server Setup](./docs/getting-started/initial-server-setup.md)
+- [Services](./docs/services/)
+- [Troubleshooting](./docs/troubleshooting/)
 
-```
+---
 
+## 📄 **License & Disclaimer**
 
-## 4. Install and enable Fail2ban
+This guide is provided **as-is** under the MIT License. While these configurations are battle-tested, always:
+- 🔒 Review security settings for your use case
+- 💾 Maintain regular backups of your data  
+- � Monitor your infrastructure performance
+- 🔄 Keep your system updated and patched
 
-*This will add a cooldown to the entity that tries to mass request our machine, avoiding bruteforce methods.*
+---
 
-```bash
-sudo apt install fail2ban -y
-sudo systemctl enable --now fail2ban
-```
-----------
+<div align="center">
 
+### 🏗️ **Ready to Build Something Amazing?**
 
-## 5. Backups and Snapshots
+[**� Get Started Now**](docs/getting-started/) • [**⭐ Star on GitHub**](https://github.com/dewstouh/justdiego-infra) • [**📧 Get Updates**](https://justdiego.com)
 
--   Make sure to create a backup of the current volume [here](https://cloud.oracle.com/compute/instances) 
-    
--   Store `.env`, SSH keys, and important configs outside the server.
+---
 
-![](https://imgur.com/jSEO16t.png)
-    
+**By [Diego Rodríguez](https://github.com/dewstouh)**  
+[� Website](https://justdiego.com) • [📧 Email](mailto:hello@justdiego.com)
 
-----------
+*"Infrastructure should be simple, secure, and scalable. This guide makes it all three."*
 
-## 6. Restore
+</div>
 
--   If you break something or you **broke** something **in the process**, DONT DELETE YOUR INSTANCE, [check this guide instead](./guides/troubleshooting/reinstall-everything.md).
-    
-----------
+## 🏗️ Infrastructure Guides
+Core infrastructure components for security and reliability.
 
-# Important guides to follow after installation
+- � **[Infrastructure Overview](./docs/infrastructure/)** - Foundational components
+  - [💾 Backup & Recovery](./docs/infrastructure/backup-recovery/README.md) - Data protection strategies
+  - [❤️‍🔥 Firewall](./docs/infrastructure/firewall/README.md) - Data protection strategies
 
-- ### [Backup your server](./guides/backup/README.md)
-    *A complete guide to backup your server and restore it in case of failure.*
+## ⚡ Services & Applications
+Self-hosted services deployed via Coolify for complete functionality.
 
-- ### [Hardening your server](./guides/hardening/README.md)
-    *A complete guide to harden your server and make it more secure.*
+<div align="center">
 
+| Service | Description | Status |
+|---------|-------------|--------|
+| [🎛️ **Coolify Panel**](./docs/services/coolify/) | Self-hosted PaaS management platform | [![Coolify](https://img.shields.io/badge/Coolify-Ready-6366F1?style=flat-square)](./docs/services/coolify/) |
+| [📧 **Mail Server**](./docs/services/mail-server/) | Complete email solution with Stalwart & SnappyMail | [![Mail](https://img.shields.io/badge/Mail_Server-Ready-FF6B6B?style=flat-square)](./docs/services/mail-server/) |
+| [📊 **Monitoring**](./docs/services/monitoring/) | Uptime monitoring with beautiful dashboards | [![Status](https://img.shields.io/badge/Monitoring-Ready-4ECDC4?style=flat-square)](./docs/services/monitoring/) |
 
+</div>
 
-# Useful tools for server management
-- ### [VPS Panel](./guides/extras/vps-panel/README.md)
-  *A simple and easy-to-use VPS management panel for your Server.*
-![](https://imgur.com/XRZ7DP7.png)
-- ### [Mail Service](./guides/extras/mail/README.md)
-    *A complete guide to set up a mail server with webmail, IMAP, SMTP, and more.*
-![](https://imgur.com/BFSeSem.png)
-- ### [Status Page](./guides/extras/uptime-status/README.md)
-    *A simple status page to monitor your server's health and uptime.*
-![](https://imgur.com/DwaRLHK.png)
+## 🔧 Support & Reference
+Troubleshooting guides and reference documentation for maintenance.
 
+- 🆘 **[Troubleshooting](./docs/troubleshooting/)** - Common issues and solutions
+- 📚 **[Reference Documentation](./docs/reference/)** - Commands, ports, configurations
 
-----------
+---
 
+<div align="center">
+
+## 👨‍💻 Author
+
+**Diego Rodríguez**
+
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/justdiego)
+[![Website](https://img.shields.io/badge/Website-justdiego.com-FF6B6B?style=for-the-badge&logo=firefox&logoColor=white)](https://justdiego.com)
+
+---
+
+### ⚠️ Disclaimer
 **Written and tested by Diego Rodríguez. If you break it, you fix it.**
+
+*This guide is provided as-is. Use at your own risk and always backup your data.*
+
+</div>

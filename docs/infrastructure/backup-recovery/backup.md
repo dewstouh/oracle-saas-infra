@@ -1,17 +1,13 @@
 # Backup/Restore Checklist
 
-- [ ] Take Oracle boot volume backup (panel > Compute > Boot Volumes > Backups)
+The main reason you should do a backup is to ensure you can restore your server in case of failure, data loss, or if you need to migrate to a new instance. This guide will help you back up your Oracle Cloud instance and restore it when needed.
+
+Let's make sure you have everything covered before proceeding with any major changes or updates to your server:
+
 - [ ] Copy all `.env` and config files off the server
 - [ ] Back up Docker volumes (see `scripts/backup.sh`)
 - [ ] Double-check DNS & Cloudflare settings
 - [ ] Save latest SSH keys locally
-
-## Restore Steps
-
-- Restore volume in Oracle panel
-- Attach volume as boot volume to new instance (if needed)
-- Update DNS/Cloudflare to new IP (if changed)
-
 
 # Backing up a Boot Volume
 To back up a boot volume in Oracle Cloud, follow these steps:
@@ -39,5 +35,10 @@ To restore a boot volume from a backup in Oracle Cloud, follow these steps:
 ![](https://imgur.com/KurxHGM.png)
 2. **Select the Backup**: In the "Backups" tab, find the backup you want to restore and click on it to open its details page.
 ![](https://imgur.com/xf3vgrt.png)
-3. **Press on Restore BOot Volume**: Click on the "Restore Boot Volume" button. You will be prompted to confirm the restoration.
+3. **Press on Restore Boot Volume**: Click on the "Restore Boot Volume" button. You will be prompted to confirm the restoration.
 ![](https://imgur.com/MJxU6TZ.png)
+
+After confirming, the boot volume will be restored from the selected backup. This process may take some time, depending on the size of the boot volume.
+
+Now you have your backup fully done and ready to be used any time you need it!
+
