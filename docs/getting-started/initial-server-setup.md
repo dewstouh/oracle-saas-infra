@@ -93,11 +93,11 @@ sudo systemctl enable --now fail2ban
 ----------
 
 # Suggested guides to follow after installation
-- ### [Backup and Restore](./guides/backup/README.md)
+- ### [Backup and Restore](../infrastructure/backup-recovery/backup.md)
     *A complete guide to backup and restore your server, including boot volume backups and Docker volumes.*
 
-- ### [Recovery Guide](./guides/initial-setup/recovery.md)
+- ### [Recovery Guide](../infrastructure/backup-recovery/recovery.md)
     *A guide to recover your server without deleting it, useful if you break something during the setup process.*
 
-- ### [Hardening your server](./guides/hardening/README.md)
+- ### [Hardening your server](security-hardening.md)
     *A complete guide to harden your server and make it more secure.*

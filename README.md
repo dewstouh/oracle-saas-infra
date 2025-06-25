@@ -52,18 +52,16 @@ Transform a **free Oracle Cloud instance** into production-ready infrastructure 
 - [Oracle Cloud Setup](./docs/getting-started/oracle-cloud-setup.md)
 - [Security Hardening](./docs/getting-started/security-hardening.md)
 - [Initial Server Setup](./docs/getting-started/initial-server-setup.md)
-- [Services](./docs/services/)
-- [Troubleshooting](./docs/troubleshooting/)
+- [Services](./docs/services/README.md)
+  - [Coolify Panel](./docs/services/coolify/README.md)
+  - [Mail Server](./docs/services/mail-server/README.md)
+  - [Monitoring](./docs/services/monitoring/README.md)
 
 ---
 
 ## 📄 **License & Disclaimer**
 
-This guide is provided **as-is** under the MIT License. While these configurations are battle-tested, always:
-- 🔒 Review security settings for your use case
-- 💾 Maintain regular backups of your data  
-- � Monitor your infrastructure performance
-- 🔄 Keep your system updated and patched
+This guide is provided **as-is** under the MIT License.
 
 ---
 
@@ -96,17 +94,11 @@ Self-hosted services deployed via Coolify for complete functionality.
 
 | Service | Description | Status |
 |---------|-------------|--------|
-| [🎛️ **Coolify Panel**](./docs/services/coolify/) | Self-hosted PaaS management platform | [![Coolify](https://img.shields.io/badge/Coolify-Ready-6366F1?style=flat-square)](./docs/services/coolify/) |
-| [📧 **Mail Server**](./docs/services/mail-server/) | Complete email solution with Stalwart & SnappyMail | [![Mail](https://img.shields.io/badge/Mail_Server-Ready-FF6B6B?style=flat-square)](./docs/services/mail-server/) |
-| [📊 **Monitoring**](./docs/services/monitoring/) | Uptime monitoring with beautiful dashboards | [![Status](https://img.shields.io/badge/Monitoring-Ready-4ECDC4?style=flat-square)](./docs/services/monitoring/) |
+| [🎛️ **Coolify Panel**](./docs/services/coolify/README.md) | Self-hosted PaaS management platform | [![Coolify](https://img.shields.io/badge/Coolify-Ready-6366F1?style=flat-square)](./docs/services/coolify/) |
+| [📧 **Mail Server**](./docs/services/mail-server/README.md) | Complete email solution with Stalwart & SnappyMail | [![Mail](https://img.shields.io/badge/Mail_Server-Ready-FF6B6B?style=flat-square)](./docs/services/mail-server/) |
+| [📊 **Monitoring**](./docs/services/monitoring/README.md) | Uptime monitoring with beautiful dashboards | [![Status](https://img.shields.io/badge/Monitoring-Ready-4ECDC4?style=flat-square)](./docs/services/monitoring/) |
 
 </div>
-
-## 🔧 Support & Reference
-Troubleshooting guides and reference documentation for maintenance.
-
-- 🆘 **[Troubleshooting](./docs/troubleshooting/)** - Common issues and solutions
-- 📚 **[Reference Documentation](./docs/reference/)** - Commands, ports, configurations
 
 ---
 

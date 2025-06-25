@@ -12,9 +12,8 @@ Self-hosted applications for your Oracle Cloud infrastructure.
 ### [📧 Mail Server](./mail/README.md)
 **Complete email solution** with webmail interface
 
-### 🎛️ Coolify
+### 🎛️ [Coolify](./coolify/README.md)
 **Management panel** for easy service deployment and monitoring  
-*Setup guide in Getting Started section*
 
 ---
 

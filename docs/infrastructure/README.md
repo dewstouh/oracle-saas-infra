@@ -6,10 +6,7 @@ Core components for your secure Oracle Cloud setup.
 
 ## 📋 Components
 
-### [🌐 Networking](./networking/)
-Firewall, DNS, and Cloudflare configuration
-
-### [🔒 Security](./security/)
+### [🔒 Firewall](./firewall/README.md)
 SSH hardening, SSL certificates, and access control
 
 ### [💾 Backup & Recovery](./backup-recovery/)

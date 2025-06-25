@@ -356,15 +356,6 @@ sudo ufw reload
 ### Cloudflare Documentation
 - [WAF Custom Rules](https://developers.cloudflare.com/waf/custom-rules/)
 - [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/)
-
-## ➡️ Next Steps
-
-With firewall properly configured:
-
-1. 🔒 [Advanced Security](../security/) - Additional security hardening
-2. 📊 [Monitoring Setup](../../services/monitoring/) - Monitor firewall activity
-3. 💾 [Backup Strategy](../backup-recovery/) - Backup firewall configurations
-
 ---
 
 **🔥 Remember**: A properly configured firewall is your first line of defense. Regularly review and update your rules!

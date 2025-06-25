@@ -578,15 +578,6 @@ sudo grep -i "fail" /var/log/auth.log
 # Create forensic backup
 sudo dd if=/dev/sda of=/backup/forensic-$(date +%Y%m%d).img bs=1M
 ```
-
-## ➡️ Next Steps
-
-With advanced security implemented:
-
-1. 💾 [Backup & Recovery](../backup-recovery/) - Secure your data
-2. 📊 [Monitoring](../../services/monitoring/) - Monitor security events
-3. 🔄 [Maintenance](../../reference/) - Regular security maintenance
-
 ---
 
 **🔒 Remember**: Security is a continuous process. Regularly review and update your security measures!

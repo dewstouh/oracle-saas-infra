@@ -64,5 +64,3 @@ After completing this guide:
 ## 🚀 Ready to Start?
 
 **[👉 Begin with Oracle Cloud Setup](./oracle-cloud-setup.md)**
-
-Need help? Check the [troubleshooting guide](../troubleshooting/).
