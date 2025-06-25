@@ -2,7 +2,7 @@
 
 * [🏗️ Just Diego Infra](README.md)
 * [🚀 Getting Started](getting-started/README.md)
-  * [initial-server-setup](getting-started/initial-server-setup.md)
+  * [🚀 Initial Setup](getting-started/initial-server-setup.md)
   * [☁️ Oracle Cloud Setup Guide](getting-started/oracle-cloud-setup.md)
   * [🔒 Advanced Security Guide](getting-started/security-hardening.md)
 * [🏗️ Infrastructure](infrastructure/README.md)
