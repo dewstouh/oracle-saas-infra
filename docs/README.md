@@ -53,7 +53,7 @@
 
 <div align="center">
 
-**By [Diego Rodríguez](https://github.com/justdiego)**  
+**By [Diego Rodríguez](https://github.com/dewstouh)**  
 [🌐 Website](https://justdiego.com) • [📧 Email](mailto:hello@justdiego.com)
 
 *Simple, secure, and scalable infrastructure.*

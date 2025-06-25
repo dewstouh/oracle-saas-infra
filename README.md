@@ -108,7 +108,7 @@ Self-hosted services deployed via Coolify for complete functionality.
 
 **Diego Rodríguez**
 
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/justdiego)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dewstouh)
 [![Website](https://img.shields.io/badge/Website-justdiego.com-FF6B6B?style=for-the-badge&logo=firefox&logoColor=white)](https://justdiego.com)
 
 ---

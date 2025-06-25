@@ -37,7 +37,7 @@ This guide will help you set up a **complete mail server** on Oracle Cloud, incl
 
 **Diego Rodríguez**
 
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge\&logo=github\&logoColor=white)](https://github.com/justdiego) [![Website](https://img.shields.io/badge/Website-justdiego.com-FF6B6B?style=for-the-badge\&logo=firefox\&logoColor=white)](https://justdiego.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge\&logo=github\&logoColor=white)](https://github.com/dewstouh) [![Website](https://img.shields.io/badge/Website-justdiego.com-FF6B6B?style=for-the-badge\&logo=firefox\&logoColor=white)](https://justdiego.com)
 
 ***
 
