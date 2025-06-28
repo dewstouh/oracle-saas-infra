@@ -11,7 +11,7 @@ We are going to install the mail server using Docker Compose, so make sure you h
 ### 1. Create a new project in Coolify and name it `Mail`.
 ![](https://imgur.com/q40fVIV.png)
 ### 2. Create a new service in the project and name it `Mail Server`.
-Use the following docker compose file (replace justdiego.ccm with your domain name):
+Use the following docker compose file (replace justdiego.com with your domain name):
 This will install the Stalwart mail server, which is a modern and secure mail server that supports SMTP, IMAP, and JMAP protocols. It also supports TLS encryption and has a web interface for managing the mail server.
 ```yaml
 services:
@@ -78,6 +78,7 @@ networks:
 ### 3. Go to the Service Settings tab and set the domain to access the mail server panel (e.g., `mail.justdiego.com`).
 ![](https://imgur.com/7V8fZly.png)
 
+
 ### 4. Log in to the mail server panel using the credentials you can find under the "log" tab in Coolify.
 ![](https://imgur.com/SbutJKQ.png)
 ![](https://imgur.com/SR61Ktf.png)
@@ -143,11 +144,36 @@ Once you have registered in the SMTP relay service, you will need to get the SMT
 Stalwart uses DANE and MTA-STS to secure the SMTP connections, but since we are using an SMTP relay, we need to disable these features.
 ![](https://imgur.com/tx88LaG.png)
 
-### 15. Save changes and restart the whole service.
-- Now we are going to restart the whole service to forcefully apply the changes. Since im using Coolify, i'll go to the Mailserver service tab and click on "Restart".
-![](https://imgur.com/aA2cxMn.png)
 
-### 16. Setting up DNS Records
+### 15. Setting the Default TLS Certificate
+Since we are using traefik, we need to configure it along with Stalwart to use the default TLS certificate provided by Stalwart.
+
+- Go to `Proxy` and add this on the Traefik configuration file:
+```yaml
+  traefik-certs-dumper:
+    image: ghcr.io/kereis/traefik-certs-dumper:latest
+    container_name: traefik-certs-dumper
+    restart: unless-stopped
+    depends_on:
+      - traefik
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /data/coolify/proxy:/traefik:ro
+      - /data/coolify/certs:/output
+```
+
+![](https://i.imgur.com/H97Roj2.png)
+
+- Restart the proxy server
+- Use the TLS certificate in Stalwart
+![](https://i.imgur.com/wxfdkDP.png)
+
+
+
+### 16. Save changes and restart the whole service.
+- Now we are going to restart the whole service to forcefully apply the changes. Since im using Coolify, i'll go to the Mailserver service tab and click on "Restart".
+
+### 17. Setting up DNS Records
 You will need to set up the following DNS records for your domain to ensure that your mail server works correctly:
 - **MX Record**: Pointing to `mail.yourdomain.com` with a priority of `10`.
 - **SPF Record**: `yourdomain.com` `v=spf1 include:spf.brevo.com mx ~all`.
@@ -164,7 +190,7 @@ You will need to set up the following DNS records for your domain to ensure that
 - **A Record**: `mail.yourdomain.com` pointing to your server's IP address.
 ![](https://imgur.com/5bLB71W.png)
 
-## 17. Testing the Mail Server
+## 18. Testing the Mail Server
 In order to test the mail server, you can use the following tools:
 - [Mail Tester](https://www.mail-tester.com/): This tool will check your mail server configuration and give you a score based on the best practices.
 - [MX Toolbox](https://mxtoolbox.com/): This tool will check your mail server's DNS records and give you a report on the configuration.
@@ -173,7 +199,7 @@ In order to test the mail server, you can use the following tools:
 
 But im going to use [Snappymail](https://snappymail.eu/) which is a webmail client that allows you to access your mail server from the web. If you want to know how to install it, [follow this guide](webmail.md).
 
-## 18. Setting up the Mail Client
+## 19. Setting up the Mail Client
 Since we added an autoconfig and autodiscover CNAME records, our mail client should be able to automatically configure the settings for our mail server. If it doesn't, you can use the following settings:
 - **Incoming Mail Server (IMAP)**:
   - Server: `mail.yourdomain.com`
@@ -191,7 +217,7 @@ Since we added an autoconfig and autodiscover CNAME records, our mail client sho
 ![](https://imgur.com/yYCk8BS.png)
 ![](https://imgur.com/ldXjYqX.png)
 
-## 19. Logging in to the Mail Client with the Account we created before
+## 20. Logging in to the Mail Client with the Account we created before
 - Go to the webmail client URL (e.g., `mail.justdiego.com`)
 - Enter your email address and password.
 - You should be able to access your email account and send/receive emails.
